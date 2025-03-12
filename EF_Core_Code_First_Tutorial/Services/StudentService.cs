@@ -13,8 +13,7 @@ namespace EF_Core_Code_First_Tutorial.Services
     {
         ApplicationDbContext _dbContext;
 
-
-        //Dependency Injection!!! Mer om det nästa vecka.   
+       
         public StudentService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;

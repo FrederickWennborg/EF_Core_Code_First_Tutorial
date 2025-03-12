@@ -1,7 +1,9 @@
 ﻿using EF_Core_Code_First_Tutorial.Contexts;
 using EF_Core_Code_First_Tutorial.Entities;
+using EF_Core_Code_First_Tutorial.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace EF_Core_Code_First_Tutorial.Data
 {
     public class DataInitializer
     {
+            
         public static ApplicationDbContext Build()
         {
             var configuration = new ConfigurationBuilder()
@@ -29,6 +32,8 @@ namespace EF_Core_Code_First_Tutorial.Data
             dbContext.Database.Migrate();
 
             return dbContext;
+
+
         }
 
 
@@ -40,8 +45,9 @@ namespace EF_Core_Code_First_Tutorial.Data
                 GenerateStudents(dbContext);
                 GenerateLessons(dbContext);
             }
-  
+
         }
+
 
         public static bool IfAnyDataExists(ApplicationDbContext dbContext)
         {
@@ -66,7 +72,7 @@ namespace EF_Core_Code_First_Tutorial.Data
             {
                 Name = "Kalle",
                 Email = "kalle@hotmail.se",
-                PhoneNumber = "07o012334567",
+                PhoneNumber = "07o01234567",
                 Course = dbContext.Courses.FirstOrDefault(c => c.CourseName == "Databashantering")!
             });
 
@@ -74,7 +80,6 @@ namespace EF_Core_Code_First_Tutorial.Data
             {
                 Name = "Anna",
                 Email = "anna@hotmail.com",
-                PhoneNumber = "07o4122334567",
                 Course = dbContext.Courses.FirstOrDefault(c => c.CourseName == "Databashantering")!
             });
 
@@ -82,7 +87,6 @@ namespace EF_Core_Code_First_Tutorial.Data
             {
                 Name = "Erik",
                 Email = "Erik@hotmail.com",
-                PhoneNumber = "07o01495847",
                 Course = dbContext.Courses.FirstOrDefault(c => c.CourseName == "Databashantering")!
             });
 
@@ -90,7 +94,6 @@ namespace EF_Core_Code_First_Tutorial.Data
             {
                 Name = "My",
                 Email = "My@hotmail.com",
-                PhoneNumber = "07o012220004",
                 Course = dbContext.Courses.FirstOrDefault(c => c.CourseName == "Databashantering")!
             });
 

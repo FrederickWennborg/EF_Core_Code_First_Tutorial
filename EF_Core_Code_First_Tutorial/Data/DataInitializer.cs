@@ -31,6 +31,21 @@ namespace EF_Core_Code_First_Tutorial.Data
         }
 
 
+        public static void InitializeData(ApplicationDbContext dbContext)
+        {
+            if (!IfAnyDataExists(dbContext))
+            {
+
+            }
+
+           
+        }
+
+
+        public static bool IfAnyDataExists(ApplicationDbContext dbContext)
+        {
+            return dbContext.Courses.Any() || dbContext.Students.Any() || dbContext.Lessons.Any();
+        }
 
 
 

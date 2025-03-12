@@ -39,7 +39,6 @@ namespace EF_Core_Code_First_Tutorial.Data
                 GenerateCourses(dbContext);
                 GenerateStudents(dbContext);
                 GenerateLessons(dbContext);
-
             }
   
         }

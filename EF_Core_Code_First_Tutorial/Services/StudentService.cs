@@ -12,9 +12,7 @@ namespace EF_Core_Code_First_Tutorial.Services
    public class StudentService
     {
         ApplicationDbContext _dbContext;
-
-
-        //Dependency Injection!!! Mer om det nästa vecka.   
+       
         public StudentService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -24,25 +22,38 @@ namespace EF_Core_Code_First_Tutorial.Services
         {
 
             _dbContext.Students.Add(student);
-
             _dbContext.SaveChanges();
-
         }
 
-        public void UpdateStudent()
+
+        public Student GetStudent(int studentId)
+        {
+            return null;
+        }
+
+
+        public List<Student> GetAllStudents()
+        {
+            return null;
+        }
+
+
+        public string UpdateStudent(int studentId)
         {
 
-            foreach (var student in _dbContext.Students)
-            {
-                if (student.Name == "Kalle")
-                {
-                    student.Name = "Karl";
-                }
-            }
-
-            _dbContext.SaveChanges();
+            return "Return status message (success or failure)";
         }
 
+        public string DeleteStudent()
+        {
+            return "Return status message (success or failure)";
+        }
+
+
+        public List<Course> GetCourses()
+        {
+          return _dbContext.Courses.ToList();
+        }
 
     }
 }

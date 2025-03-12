@@ -14,7 +14,7 @@ namespace EF_Core_Code_First_Tutorial.Data
 {
     public class DataInitializer
     {
-
+            
         public static ApplicationDbContext Build()
         {
             var configuration = new ConfigurationBuilder()
@@ -28,13 +28,15 @@ namespace EF_Core_Code_First_Tutorial.Data
              .UseSqlServer(connectionString)
              .Options;
 
-            using var dbContext = new ApplicationDbContext(contextOptions!);
+            var dbContext = new ApplicationDbContext(contextOptions);
             dbContext.Database.Migrate();
 
             return dbContext;
+
+
         }
 
-        public static ApplicationDbContext InitializeData(ApplicationDbContext dbContext)
+        public static void InitializeData(ApplicationDbContext dbContext)
         {
             if (!IfAnyDataExists(dbContext))
             {
@@ -43,7 +45,6 @@ namespace EF_Core_Code_First_Tutorial.Data
                 GenerateLessons(dbContext);
             }
 
-            return dbContext;
         }
 
 
@@ -54,11 +55,11 @@ namespace EF_Core_Code_First_Tutorial.Data
 
         public static void GenerateCourses(ApplicationDbContext dbContext)
         {
-          
-                dbContext.Courses.Add(new Course
-                {
-                    CourseName = "Databashantering"
-                });
+
+            dbContext.Courses.Add(new Course
+            {
+                CourseName = "Databashantering"
+            });
 
             dbContext.SaveChanges();
         }
